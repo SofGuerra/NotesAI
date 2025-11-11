@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import FirebaseFirestore
+
+struct Tag: Identifiable, Codable {
+    
+    @DocumentID var id: String?
+    let email: String
+    var displayName: String
+    var isActive: Bool = true
+    
+}
+
+

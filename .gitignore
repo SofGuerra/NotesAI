@@ -1,0 +1,16 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserdata
+*.xcuserstate
+
+# Swift Package Manager
+.build/
+Package.resolved
+
+# macOS
+.DS_Store
+
+# Personal
+GoogleService-Info (1).plist
+
