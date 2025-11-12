@@ -72,8 +72,8 @@ struct LoginView: View {
                     }
  
                     
-                    Button(action:{
-                        print("Sign up clicked")
+                    Button("Login"){
+                        print("Login clicked")
                         
                         guard Validators.isValidEmail(email) else {
                             self.errorMessage = "Invalid Email"
@@ -85,26 +85,15 @@ struct LoginView: View {
                             return
                         }
                         
-                        guard !displayName.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty else {
-                            self.errorMessage = "Please enter a display name"
-                            return
-                        }
-                        auth.signUp(email: email, password: password, displayName: displayName) {
+                        auth.login(email: email, password: password) {
                             result in
                             switch result {
-                            case .success: self.errorMessage = nil
-                            case .failure(let failure): self.errorMessage = failure.localizedDescription
+                                case .success:
+                                self.errorMessage = nil
+                            case .failure(let failure):
+                                self.errorMessage = failure.localizedDescription
                             }
                         }
-                    })
-                    {
-                        Text("Sign In")
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.red.opacity(0.9))
-                            .foregroundColor(.white)
-                            .shadow(radius: 2)
                         
                     }
                     .disabled(email.isEmpty || password.isEmpty)
