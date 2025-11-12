@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var auth = AuthService.shared
     @State private var isLoaded = false
+    @StateObject private var noteManager = NoteViewModel.shared
     
     var body: some View {
         Group{
@@ -24,7 +25,8 @@ struct ContentView: View {
             } else if auth.currentUser == nil {
                 AuthGate()
             } else {
-                ProfileView()
+                NoteView()
+                    .environmentObject(noteManager)
             }
         }
     }
