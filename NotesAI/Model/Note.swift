@@ -16,7 +16,7 @@ enum TextType: String, CaseIterable, Codable { case title, subtitle, body, capti
 
 
 struct Note: Identifiable, Codable{
-    //simplify model
+   
     @DocumentID var id: String?
     var title: String //font is never saved in the firebase
     var content: String
@@ -24,6 +24,4 @@ struct Note: Identifiable, Codable{
     var dateCreated: Date = Date()
     var dateModified: Date = Date()
     var isPinned: Bool = false
-    var isSynced: Bool = false // no entiendo para que lo quieren
-    var lastBackup: Date?
 }
