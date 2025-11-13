@@ -10,6 +10,7 @@ import FirebaseCore
 
 struct TaskView: View {
     @EnvironmentObject private var taskManager: TaskViewModel
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 10){
@@ -26,6 +27,7 @@ struct TaskView: View {
                 Divider()
                 List {
                     ForEach(taskManager.tasks) { task in
+                        
                         HStack {
                             NavigationLink(destination: TaskDetailView(task: task)) {
                                 VStack(alignment: .leading) {
@@ -37,10 +39,11 @@ struct TaskView: View {
                                 }
                             }
                             Spacer()
-                            Toggle(isOn: .constant(task.isCompleted)) {
-                                Text("Done")
+                            Toggle(isOn: Binding(get: {task.isCompleted},
+                                                 set: {newValue in
+                                taskManager.toggleTask(task: task, isCompleted: newValue)})){
+                                    EmptyView()
                             }
-                            .labelsHidden()
                         }
                     }
                     .onDelete(perform: deleteTask)
@@ -59,7 +62,7 @@ struct TaskView: View {
             .padding(.horizontal)
         }
     }
-
+    
     private func deleteTask(at offsets: IndexSet) {
         offsets.forEach { index in
             let task = taskManager.tasks[index]

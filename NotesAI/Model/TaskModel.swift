@@ -13,5 +13,5 @@ struct TaskModel: Identifiable, Codable {
     var noteDetails: Note
     var deadline: Date
     var recurrence: Recurrence = Recurrence.none
-    var isCompleted: Bool = false
+    var isCompleted: Bool
 }

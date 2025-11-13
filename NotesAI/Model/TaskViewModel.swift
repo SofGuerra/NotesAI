@@ -60,10 +60,17 @@ class TaskViewModel: ObservableObject {
         guard let taskID = task.id else { return }
         do {
             try db.collection("tasks").document(taskID).setData(from: task)
+            
         } catch {
             print(error.localizedDescription)
         }
     }
+    
+    func toggleTask(task: TaskModel, isCompleted: Bool) {
+        guard let taskID = task.id else { return }
+        db.collection("tasks").document(taskID).updateData(["isCompleted": isCompleted])
+    }
+    
     
     func reorderTasks(){
             tasks.sort {
