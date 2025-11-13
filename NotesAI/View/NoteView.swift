@@ -9,7 +9,8 @@ import SwiftUI
 import FirebaseCore
 
 struct NoteView: View {
-    
+    @State private var query = ""
+    @State private var isSearching = false
     @EnvironmentObject private var noteManager: NoteViewModel
     @State private var showNotes = true //para el picker como en el login
     var body: some View {
@@ -61,9 +62,6 @@ struct NoteView: View {
                         }
                     }.onDelete(perform: deleteNote)
                     
-                    
-                    //SWIPE ACTION PARA PIN
-                    //no necesito pasar el parametro de que nota por que ya toma el index del foreach
                 }.listStyle(.plain)
                     .onAppear{
                         if !noteManager.notes.isEmpty{
@@ -74,8 +72,7 @@ struct NoteView: View {
                     }
                 Spacer()
                 Divider()
-                SearchBar(query: .constant(""),
-                          isSearching: .constant(false))
+                SearchBar(query: $query, isSearching: $isSearching)
                 
             }
             .padding(.horizontal)

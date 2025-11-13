@@ -33,12 +33,14 @@ class NoteViewModel: ObservableObject {
                 
                 try? note.data(as: Note.self)
             }) ?? []
+            self.reorderNotes()
         }
     }
     
     func addNote(title: String, content: String){
         let newNote = Note(title: title, content: content)
-        
+        notes.append(newNote)
+        reorderNotes()
         do {
             try db.collection("notes").addDocument(from: newNote)
         } catch {

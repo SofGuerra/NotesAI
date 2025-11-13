@@ -80,6 +80,7 @@ struct NoteDetailView: View {
                         Spacer()
                         Button{
                             dismiss()
+                            
                         }label: {
                             Text("Title")
                                 .font(.title)
@@ -105,7 +106,7 @@ struct NoteDetailView: View {
                         
                     }
                     .padding()
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                 }
             }
             
@@ -140,7 +141,7 @@ struct NoteDetailView: View {
                     
                 }
                 .padding()
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
                 .animation(.easeInOut, value: isEditing)
                 
             }
@@ -149,18 +150,18 @@ struct NoteDetailView: View {
     }
 }
 
-private func fontType(_ type: TextType) -> Font {
-    switch type {
-    case .title:
-        return .system(size: 16, weight: .bold)
-    case .subtitle:
-        return .system(size: 14, weight: .bold)
-    case .body:
-        return .system(size: 12)
-    case .caption:
-        return .system(size: 11, weight: .light)
-    }
-}
+//private func fontType(_ type: TextType) -> Font {
+//    switch type {
+//    case .title:
+//        return .system(size: 16, weight: .bold)
+//    case .subtitle:
+//        return .system(size: 14, weight: .bold)
+//    case .body:
+//        return .system(size: 12)
+//    case .caption:
+//        return .system(size: 11, weight: .light)
+//    }
+//}
 
 #Preview {
     NoteDetailView()

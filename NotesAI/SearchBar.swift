@@ -11,8 +11,9 @@ import SwiftUI
 struct SearchBar: View {
     
     @Binding var query: String
-    @FocusState var searchFocused: Bool
     @Binding var isSearching: Bool
+    @FocusState var searchFocused: Bool
+
     
     var body: some View {
         VStack{
@@ -63,10 +64,7 @@ struct SearchBar: View {
         }
         Spacer()
     }
-    func collapseSearch(){
-        query = ""
-        searchFocused = false
-    }
+
     
     private func open() {
         isSearching = true
@@ -81,6 +79,9 @@ struct SearchBar: View {
 }
 
 #Preview {
-    SearchBar(query: .constant(""),
-              isSearching: .constant(false))
+    @State var query = ""
+        @State var isSearching = false
+        
+        return SearchBar(query: $query,
+                         isSearching: $isSearching)
 }
