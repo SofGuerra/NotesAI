@@ -11,40 +11,13 @@ import FirebaseCore
 struct NoteView: View {
     @State private var query = ""
     @State private var isSearching = false
-    @EnvironmentObject private var noteManager: NoteViewModel
-    @State private var showNotes = true //para el picker como en el login
+    @StateObject var noteManager = NoteViewModel.shared
     var body: some View {
-        NavigationView {
             //top menu
             VStack(alignment: .leading, spacing: 10){
-                HStack{
-                    Image(systemName: "line.3.horizontal")
-                    Spacer()
-                    Text("Notes")
-                        .font(.title)
-                    Spacer()
-                    NavigationLink(destination: NoteDetailView()){
-                        Image(systemName: "plus")
-                    }
-                    
-                }.padding()
-                Divider()
-                //                VStack {
-                //                    Picker("", selection: $showNotes){
-                //                        Text("Notes").tag(true) //el tag hace que si seleccionas el "login" se muestra el showlogin como true
-                //                        Text("Archived").tag(false)  //el "login" se muestra el showlogin como false
-                //                    }.pickerStyle(.segmented) //automatico es con flechitas, .inline es como el timer de iphone
-                //                        .padding()
-                //                    if showNotes {
-                //                        NoteView()
-                //                    } else {
-                //                        NoteArchiveView()
-                //                    }
-                //                }
-                // filtro de tags
                 
                 List {
-                    ForEach(noteManager.notes){
+                    ForEach(noteManager.notes.filter{!$0.isArchived}){
                         note in
                         HStack{
                             NavigationLink(destination: NoteDetailView(note: note)){
@@ -59,6 +32,13 @@ struct NoteView: View {
                                 note.isPinned ? Text("Unpin") : Text("Pin")
                             }
                             .tint(.yellow)
+                            Button {
+                                archiveNote(note)
+                            } label: {
+                                Image(systemName: "archivebox.fill")
+                                note.isArchived ? Text("Archived") : Text("Archive")
+                            }
+                            .tint(.blue)
                         }
                     }.onDelete(perform: deleteNote)
                     
@@ -76,8 +56,7 @@ struct NoteView: View {
                 
             }
             .padding(.horizontal)
-            
-        }
+        
     }
     
     private func deleteNote(at offsets: IndexSet){
@@ -92,7 +71,11 @@ struct NoteView: View {
     private func pinNote(_ note: Note){
         let isPinned = note.isPinned
         noteManager.pinNote(noteToPin: note, isPinned: !isPinned)
-        
+    }
+    
+    private func archiveNote(_ note: Note){
+        let isArchived = note.isArchived
+        noteManager.archiveNotes(archivedNote: note, isArchived: !isArchived)
     }
 }
 

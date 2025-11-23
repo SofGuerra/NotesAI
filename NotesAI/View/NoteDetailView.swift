@@ -11,7 +11,7 @@ import Combine
 
 struct NoteDetailView: View {
     
-    @EnvironmentObject private var noteManager: NoteViewModel
+    @StateObject var noteManager = NoteViewModel.shared
     @Environment(\.dismiss) var dismiss
     @State var note: Note?
     @State private var isEditing = false
@@ -150,18 +150,6 @@ struct NoteDetailView: View {
     }
 }
 
-//private func fontType(_ type: TextType) -> Font {
-//    switch type {
-//    case .title:
-//        return .system(size: 16, weight: .bold)
-//    case .subtitle:
-//        return .system(size: 14, weight: .bold)
-//    case .body:
-//        return .system(size: 12)
-//    case .caption:
-//        return .system(size: 11, weight: .light)
-//    }
-//}
 
 #Preview {
     NoteDetailView()

@@ -28,7 +28,7 @@ struct RegisterView: View {
                         //Email
                     Text("Email")
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .font(.title3)
                     
                     TextField("Enter email", text: $email)
@@ -43,7 +43,7 @@ struct RegisterView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Password")
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .font(.title3)
                     
                     SecureField("Enter Password (min 6 chars", text: $password)
@@ -55,7 +55,7 @@ struct RegisterView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Enter Display Name")
                         .fontWeight(.bold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .font(.title3)
              
                     TextField("Enter Display Name", text: $displayName)

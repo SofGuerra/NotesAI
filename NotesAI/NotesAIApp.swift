@@ -19,12 +19,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct NotesAIApp: App {
-    
+    @AppStorage("isDarkMode") var isDarkMode: Bool = true
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(isDarkMode ? .light : .dark)
         }
     }
 }
