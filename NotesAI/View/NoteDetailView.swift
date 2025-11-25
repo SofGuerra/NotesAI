@@ -131,7 +131,11 @@ struct NoteDetailView: View {
                 HStack (spacing: 16){
                     
                     Button{
-                        dismiss() // share y export
+                        if let note {
+                               if let pdfURL = generatePDF(note: note) {
+                                   sharePDF(url: pdfURL)
+                               }
+                           }
                     }label: {
                         Image(systemName: "square.and.arrow.up")
                     }

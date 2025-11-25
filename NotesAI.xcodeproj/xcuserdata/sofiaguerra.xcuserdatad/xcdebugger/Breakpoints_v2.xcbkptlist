@@ -68,28 +68,28 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "7E42D02C-63B6-4DBC-86BE-2A6FFE648FB8 - d91995a7d1392145"
+                  uuid = "7E42D02C-63B6-4DBC-86BE-2A6FFE648FB8 - 6ed8c481490eaebc"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.scrollContentBackground(SwiftUI.Visibility) -&gt; some&gt;&gt;.0, Swift.Optional&lt;SwiftUI.Text&gt;, &lt;&lt;opaque return type of SwiftUI.View.disabled(Swift.Bool) -&gt; some&gt;&gt;.0)&gt; in NotesAI.RegisterView.body.getter : some"
                   moduleName = "NotesAI.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sofiaguerra/Desktop/IOS%20IV%20semester/NotesAI/NotesAI/View/RegisterView.swift"
+                  urlString = "file:///Users/sofiaguerra/Documents/NotesAI/NotesAI/View/RegisterView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
                   endingLineNumber = "74">
                </Location>
                <Location
-                  uuid = "7E42D02C-63B6-4DBC-86BE-2A6FFE648FB8 - 60dbba7d1d775cf8"
+                  uuid = "7E42D02C-63B6-4DBC-86BE-2A6FFE648FB8 - d71aeb5b8540d34f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.scrollContentBackground(SwiftUI.Visibility) -&gt; some&gt;&gt;.0, Swift.Optional&lt;SwiftUI.Text&gt;, &lt;&lt;opaque return type of SwiftUI.View.disabled(Swift.Bool) -&gt; some&gt;&gt;.0)&gt; in NotesAI.RegisterView.body.getter : some"
                   moduleName = "NotesAI.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sofiaguerra/Desktop/IOS%20IV%20semester/NotesAI/NotesAI/View/RegisterView.swift"
+                  urlString = "file:///Users/sofiaguerra/Documents/NotesAI/NotesAI/View/RegisterView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"

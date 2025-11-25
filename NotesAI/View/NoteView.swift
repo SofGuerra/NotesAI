@@ -11,13 +11,44 @@ import FirebaseCore
 struct NoteView: View {
     @State private var query = ""
     @State private var isSearching = false
-    @StateObject var noteManager = NoteViewModel.shared
+    @EnvironmentObject private var noteManager: NoteViewModel
+    @State private var showNotes = true //para el picker como en el login
+    
+    @StateObject private var tagManager: TagManager = TagManager()
+    @State private var selectedTag: Tag?
+    
+    private var filteredNotes: [Note] {
+        
+        
+        if let tag = selectedTag {
+            return noteManager.notes.filter{ note in
+                note.tags.contains(tag.id ?? "")
+            }
+        } else {
+            return noteManager.notes
+        }
+    }
+    
     var body: some View {
             //top menu
             VStack(alignment: .leading, spacing: 10){
                 
+               // TagFilterMenu(selectedTag: $selectedTag) .environmentObject(tagManager)
+               TagFilterMenu(selectedTag: $selectedTag)
+                   .environmentObject(tagManager)
+                   .onChange(of: selectedTag) { newTag in
+                       // This code runs whenever the selection changes
+                       if let tag = newTag {
+                           print("Selected tag: \(tag.name)")
+                       } else {
+                           print("All tags selected")
+                       }
+                   }
+
+                
+                
                 List {
-                    ForEach(noteManager.notes.filter{!$0.isArchived}){
+                    ForEach(filteredNotes.filter{!$0.isArchived}){
                         note in
                         HStack{
                             NavigationLink(destination: NoteDetailView(note: note)
@@ -29,6 +60,30 @@ struct NoteView: View {
                                 }
                             }
                             Spacer()
+                            Menu {
+                                ForEach(tagManager.tags, id: \.id) { tag in
+                                    Button {
+                                        var updatedNote = note
+                                        var tagId = tag.id ?? ""
+                                        if !updatedNote.tags.contains(tagId) {
+                                            updatedNote.tags.append(tagId)
+                                        }
+                                        //noteManager.notes[index] = updatedNote
+                                        noteManager.editNote(note: updatedNote)
+//                                        tagManager.editTag(tag: updatedTag)
+                                    } label: {
+                                        HStack {
+                                    
+                                            Text(tag.name)
+                                       }
+                                   }
+                                }
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .foregroundColor(.black)
+                                    .rotationEffect(.degrees(90))
+
+                            }
                         }.swipeActions(edge: .leading, allowsFullSwipe: false){
                             Button {
                                 pinNote(note)
