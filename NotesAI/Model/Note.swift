@@ -24,4 +24,5 @@ struct Note: Identifiable, Codable{
     var dateCreated: Date = Date()
     var dateModified: Date = Date()
     var isPinned: Bool = false
+    var isArchived: Bool = false
 }

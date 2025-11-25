@@ -20,6 +20,7 @@ struct SearchBar: View {
             HStack{
                 Spacer()
                 if isSearching{
+                    
                     HStack (spacing: 12) {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(.secondary)
@@ -46,7 +47,7 @@ struct SearchBar: View {
                         closeBar()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                     }
                     .padding(.leading, 8)
                         .transition(.move(edge: .trailing))

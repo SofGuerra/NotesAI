@@ -19,15 +19,13 @@ struct LoginView: View {
     var body: some View {
         
         ZStack{
-            Color(.white)
-                    .ignoresSafeArea()
             
             VStack(spacing: 20){
                 Spacer()
                 Text("Notes AI")
                     .font(.title3)
                     .fontWeight(.light)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.primary)
                     .padding(.bottom, 20)
                 
                 Form {
@@ -42,7 +40,7 @@ struct LoginView: View {
                                 //Email
                             Text("Email")
                                 .fontWeight(.bold)
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .font(.title3)
                             
                             TextField("Enter Email", text: $email)
@@ -55,7 +53,7 @@ struct LoginView: View {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Password")
                                 .fontWeight(.bold)
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .font(.title3)
                             
                             SecureField("Enter Password (Min 6 charactes)", text: $password)
@@ -72,7 +70,7 @@ struct LoginView: View {
                     }
  
                     
-                    Button("Login"){
+                    Button(action:{
                         print("Login clicked")
                         
                         guard Validators.isValidEmail(email) else {
@@ -95,15 +93,25 @@ struct LoginView: View {
                             }
                         }
                         
+                    }) {
+                        Text("Login")
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green.opacity(0.9))
+                        .foregroundColor(.white)
+                        .shadow(radius: 2)
                     }
                     .disabled(email.isEmpty || password.isEmpty)
+                    
+                    
                     
                 }.scrollContentBackground(.hidden)
                 
                 HStack{
                     Text("Don’t have an account?")
                             .font(.footnote)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                     NavigationLink(destination: RegisterView()) {
                         Text("Go to register")
                             .font(.footnote)

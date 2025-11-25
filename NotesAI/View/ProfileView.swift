@@ -11,7 +11,7 @@ struct ProfileView: View {
     @ObservedObject private var auth = AuthService.shared
     @State private var newName = ""
     @State private var errorMessage: String?
-    
+    @AppStorage("isDarkMode") var isDarkMode: Bool = true
     var body: some View {
         Form {
             Section("Profile") {
@@ -44,6 +44,10 @@ struct ProfileView: View {
             if let errorMessage = errorMessage {
                 Text(errorMessage)
                     .foregroundStyle(.red)
+            }
+            
+            Section("App Theme"){
+                Toggle("Switch Theme Mode", isOn: $isDarkMode)
             }
             
             Button(role: .destructive) { //.destructive automaticamente setea el color del texto a rojo por su naturaleza (destruye el usuario en la sesion activa)

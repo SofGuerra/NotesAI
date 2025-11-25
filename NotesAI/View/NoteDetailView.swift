@@ -11,12 +11,14 @@ import Combine
 
 struct NoteDetailView: View {
     
-    @EnvironmentObject private var noteManager: NoteViewModel
+    @StateObject var noteManager = NoteViewModel.shared
     @Environment(\.dismiss) var dismiss
     @State var note: Note?
     @State private var isEditing = false
     @State private var newNoteTitle = ""
     @State private var newNoteContent = ""
+    @State private var textSelection: TextSelection?
+    @EnvironmentObject private var taskManager: TaskViewModel
     
     var body: some View {
         
@@ -24,11 +26,14 @@ struct NoteDetailView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 15) {
                     if isEditing || note == nil {
-                        TextField("Title", text: $newNoteTitle)
+                        TextField("Title", text: $newNoteTitle, selection: $textSelection)
                             .font(.title)
+                            .textSelection(.enabled)
+                            
 
-                        TextEditor(text: $newNoteContent)
+                        TextEditor(text: $newNoteContent, selection: $textSelection)
                             .frame(minHeight:  100)
+                            .writingToolsBehavior(.complete)
                         
                     } else {
                         if let existingNote = note {
@@ -55,7 +60,16 @@ struct NoteDetailView: View {
                     HStack(spacing: 20){
                         HStack(spacing: 25){
                             Button{
-                                dismiss()
+                                var newDeadline: Date = Date.now
+                                var newRecurrence: Recurrence = .none
+                                var newIsCompleted: Bool = false
+                                let newTask = TaskModel(noteDetails: note!, deadline: newDeadline, recurrence: newRecurrence, isCompleted: newIsCompleted)
+                                taskManager.addTask(task: newTask)
+                            }label: {
+                                Image(systemName: "checkmark.rectangle.stack")
+                            }
+                            Button{
+                                
                             }label: {
                                 Image(systemName: "bold")
                             }
@@ -154,18 +168,6 @@ struct NoteDetailView: View {
     }
 }
 
-//private func fontType(_ type: TextType) -> Font {
-//    switch type {
-//    case .title:
-//        return .system(size: 16, weight: .bold)
-//    case .subtitle:
-//        return .system(size: 14, weight: .bold)
-//    case .body:
-//        return .system(size: 12)
-//    case .caption:
-//        return .system(size: 11, weight: .light)
-//    }
-//}
 
 #Preview {
     NoteDetailView()

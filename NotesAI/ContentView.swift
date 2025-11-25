@@ -11,22 +11,24 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var auth = AuthService.shared
     @State private var isLoaded = false
-    @StateObject private var taskManager = TaskViewModel.shared
-    
+    @StateObject private var taskManager = NoteViewModel.shared
+    @State private var themeMode = ColorScheme.light
     var body: some View {
-        Group{
-            if !isLoaded {
-                ProgressView()
-                    .onAppear {
-                        auth.fetchCurrentAppUser { _ in
-                            isLoaded = true
+        NavigationView{
+            Group{
+                if !isLoaded {
+                    ProgressView()
+                        .onAppear {
+                            auth.fetchCurrentAppUser { _ in
+                                isLoaded = true
+                            }
                         }
-                    }
-            } else if auth.currentUser == nil {
-                AuthGate()
-            } else {
-                TaskView()
-                    .environmentObject(taskManager)
+                } else if auth.currentUser == nil {
+                    AuthGate()
+                } else {
+                    HomePageView()
+                        .environmentObject(taskManager)
+                }
             }
         }
     }

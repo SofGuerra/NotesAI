@@ -28,43 +28,20 @@ struct NoteView: View {
     }
     
     var body: some View {
-        NavigationView {
             //top menu
             VStack(alignment: .leading, spacing: 10){
-                HStack{
-                    Image(systemName: "line.3.horizontal")
-                    Spacer()
-                    Text("Notes")
-                        .font(.title)
-                    Spacer()
-                    NavigationLink(destination: NoteDetailView()){
-                        Image(systemName: "plus")
-                    }
-                    
-                }.padding()
-                Divider()
-                
-                //TagFilterMenu(selectedTag: $selectedTag) .environmentObject(tagManager)
-                
-                
-                TagFilterMenu(selectedTag: $selectedTag)
-                    .environmentObject(tagManager)
-                    .onChange(of: selectedTag) { newTag in
-                        // This code runs whenever the selection changes
-                        if let tag = newTag {
-                            print("Selected tag: \(tag.name)")
-                        } else {
-                            print("All tags selected")
-                        }
-                    }
-
                 
                 List {
                     ForEach(filteredNotes){
                         note in
                         HStack{
-                            NavigationLink(destination: NoteDetailView(note: note)){
-                                Text(note.title)
+                            NavigationLink(destination: NoteDetailView(note: note)
+                                .environmentObject(TaskViewModel.shared)){
+                                VStack (alignment: .leading){
+                                    Text(note.title)
+                                    Text(note.content)
+                                        .lineLimit(1)
+                                }
                             }
                             Spacer()
                             Menu {
@@ -99,6 +76,13 @@ struct NoteView: View {
                                 note.isPinned ? Text("Unpin") : Text("Pin")
                             }
                             .tint(.yellow)
+                            Button {
+                                archiveNote(note)
+                            } label: {
+                                Image(systemName: "archivebox.fill")
+                                note.isArchived ? Text("Archived") : Text("Archive")
+                            }
+                            .tint(.blue)
                         }
                     }.onDelete(perform: deleteNote)
                     
@@ -116,8 +100,7 @@ struct NoteView: View {
                 
             }
             .padding(.horizontal)
-            
-        }
+        
     }
     
     private func deleteNote(at offsets: IndexSet){
@@ -132,7 +115,11 @@ struct NoteView: View {
     private func pinNote(_ note: Note){
         let isPinned = note.isPinned
         noteManager.pinNote(noteToPin: note, isPinned: !isPinned)
-        
+    }
+    
+    private func archiveNote(_ note: Note){
+        let isArchived = note.isArchived
+        noteManager.archiveNotes(archivedNote: note, isArchived: !isArchived)
     }
 }
 

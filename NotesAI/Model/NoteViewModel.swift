@@ -73,8 +73,6 @@ class NoteViewModel: ObservableObject {
            
     }
     
-    
-    //estas se ponen aqui o se ponen en el NoteView???
     func pinNote(noteToPin: Note, isPinned: Bool){
         guard let noteID = noteToPin.id else {
             return
@@ -95,5 +93,16 @@ class NoteViewModel: ObservableObject {
             }
             return $0.dateModified > $1.dateModified
         }
+    }
+    
+    func archiveNotes(archivedNote: Note, isArchived: Bool){
+        guard let noteID = archivedNote.id else {
+            return
+        }
+        if let index = notes.firstIndex(where: { $0.id == noteID}){
+            notes[index].isArchived = isArchived
+            
+        }
+        db.collection("notes").document(noteID).updateData(["isArchived": isArchived])
     }
 }

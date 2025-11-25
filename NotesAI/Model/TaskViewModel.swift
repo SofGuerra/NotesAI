@@ -28,13 +28,15 @@ class TaskViewModel: ObservableObject {
             }
             
             self.tasks = querySnapshot?.documents.compactMap({task in
-                
-                try? task.data(as: TaskModel.self)
+                var newTask: TaskModel?
+                try? newTask = task.data(as: TaskModel.self)
+                newTask?.id = task.documentID
+                return newTask
             }) ?? []
             self.reorderTasks()
         }
     }
-
+    
     func addTask(task: TaskModel){
         do {
             try db.collection("tasks").addDocument(from: task)
@@ -56,10 +58,11 @@ class TaskViewModel: ObservableObject {
     }
 
     func editTask(task: TaskModel) {
-
+        var modifiedTask = task
         guard let taskID = task.id else { return }
         do {
-            try db.collection("tasks").document(taskID).setData(from: task)
+            modifiedTask.noteDetails.dateModified = Date.now
+            try db.collection("tasks").document(taskID).setData(from: modifiedTask)
             
         } catch {
             print(error.localizedDescription)
@@ -67,6 +70,7 @@ class TaskViewModel: ObservableObject {
     }
     
     func toggleTask(task: TaskModel, isCompleted: Bool) {
+        print(task)
         guard let taskID = task.id else { return }
         db.collection("tasks").document(taskID).updateData(["isCompleted": isCompleted])
     }
