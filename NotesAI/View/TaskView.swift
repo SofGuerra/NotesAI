@@ -15,8 +15,8 @@ struct TaskView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 10){
                 HStack{
-                    Image(systemName: "line.3.horizontal")
-                    Spacer()
+//                    Image(systemName: "line.3.horizontal")
+                 Spacer()
                     Text("Tasks")
                         .font(.title)
                     Spacer()
