@@ -62,11 +62,13 @@ struct HomePageView: View {
                             Text("Tasks")
                                 .padding()
                         }
-                        //                NavigationLink(destination: TagsView()){
-                        //                    Image(systemName: "tag")
-                        //                    Text("Manage Tags")
-                        //                        .padding()
-                        //                }
+                        
+                        NavigationLink(destination:
+                                        TagsManageViews().environmentObject(TagManager.shared )){
+                            Image(systemName: "tag")
+                            Text("Tags")
+                                .padding()
+                        }
                         Spacer()
                     }
                     .frame(width:gred.size.width / 1.9)

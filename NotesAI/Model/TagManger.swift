@@ -13,6 +13,7 @@ import FirebaseCore
 class TagManager: ObservableObject{
     
     private let db = Firestore.firestore()
+    static let shared = TagManager()
     
     @Published var tags: [Tag] = []
     

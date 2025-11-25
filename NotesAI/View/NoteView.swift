@@ -18,8 +18,10 @@ struct NoteView: View {
     @State private var selectedTag: Tag?
     
     private var filteredNotes: [Note] {
+        
+        
         if let tag = selectedTag {
-            return noteManager.notes.filter { note in
+            return noteManager.notes.filter{ note in
                 note.tags.contains(tag.id ?? "")
             }
         } else {
@@ -31,8 +33,22 @@ struct NoteView: View {
             //top menu
             VStack(alignment: .leading, spacing: 10){
                 
+               // TagFilterMenu(selectedTag: $selectedTag) .environmentObject(tagManager)
+               TagFilterMenu(selectedTag: $selectedTag)
+                   .environmentObject(tagManager)
+                   .onChange(of: selectedTag) { newTag in
+                       // This code runs whenever the selection changes
+                       if let tag = newTag {
+                           print("Selected tag: \(tag.name)")
+                       } else {
+                           print("All tags selected")
+                       }
+                   }
+
+                
+                
                 List {
-                    ForEach(filteredNotes){
+                    ForEach(filteredNotes.filter{!$0.isArchived}){
                         note in
                         HStack{
                             NavigationLink(destination: NoteDetailView(note: note)
