@@ -8,11 +8,11 @@
 import Foundation
 import FirebaseFirestore
 
-
-enum TextFormat: String, CaseIterable, Codable { case bold, italic, underline, strikethrough }
-
-enum TextType: String, CaseIterable, Codable { case title, subtitle, body, caption }
-//crear variable en la clase themeyfont var textfor y texttype y las referencio alla
+//
+//enum TextFormat: String, CaseIterable, Codable { case bold, italic, underline, strikethrough }
+//
+//enum TextType: String, CaseIterable, Codable { case title, subtitle, body, caption }
+////crear variable en la clase themeyfont var textfor y texttype y las referencio alla
 
 
 struct Note: Identifiable, Codable{

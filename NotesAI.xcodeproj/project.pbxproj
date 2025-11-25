@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD92B9042EC3BCD80021D02E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD92B9032EC3BCD80021D02E /* GoogleService-Info.plist */; };
 		D96647EC2EBFADA900A39944 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D96647EB2EBFADA900A39944 /* FirebaseCore */; };
 		D96647EE2EBFADB500A39944 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D96647ED2EBFADB500A39944 /* FirebaseFirestore */; };
 		D96647F02EBFADBB00A39944 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D96647EF2EBFADBB00A39944 /* FirebaseAuth */; };
-		D9D8D7ED2EC6AE81009F15A5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9D8D7EC2EC6AE81009F15A5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD92B9032EC3BCD80021D02E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D96647D92EBFABC100A39944 /* NotesAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9D8D7EC2EC6AE81009F15A5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -46,7 +46,7 @@
 				D96647DB2EBFABC100A39944 /* NotesAI */,
 				D96647DA2EBFABC100A39944 /* Products */,
 				D96647EA2EBFADA900A39944 /* Frameworks */,
-				D9D8D7EC2EC6AE81009F15A5 /* GoogleService-Info.plist */,
+				CD92B9032EC3BCD80021D02E /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,7 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9D8D7ED2EC6AE81009F15A5 /* GoogleService-Info.plist in Resources */,
+				CD92B9042EC3BCD80021D02E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
