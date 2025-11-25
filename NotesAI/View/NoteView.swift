@@ -21,7 +21,11 @@ struct NoteView: View {
                         note in
                         HStack{
                             NavigationLink(destination: NoteDetailView(note: note)){
-                                Text(note.title)
+                                VStack (alignment: .leading){
+                                    Text(note.title)
+                                    Text(note.content)
+                                        .lineLimit(1)
+                                }
                             }
                             Spacer()
                         }.swipeActions(edge: .leading, allowsFullSwipe: false){

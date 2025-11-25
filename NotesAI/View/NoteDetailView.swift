@@ -17,6 +17,7 @@ struct NoteDetailView: View {
     @State private var isEditing = false
     @State private var newNoteTitle = ""
     @State private var newNoteContent = ""
+    @State private var textSelection: TextSelection?
     
     var body: some View {
         
@@ -24,11 +25,14 @@ struct NoteDetailView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 15) {
                     if isEditing || note == nil {
-                        TextField("Title", text: $newNoteTitle)
+                        TextField("Title", text: $newNoteTitle, selection: $textSelection)
                             .font(.title)
+                            .textSelection(.enabled)
+                            
 
-                        TextEditor(text: $newNoteContent)
+                        TextEditor(text: $newNoteContent, selection: $textSelection)
                             .frame(minHeight:  100)
+                            .writingToolsBehavior(.complete)
                         
                     } else {
                         if let existingNote = note {
@@ -55,7 +59,7 @@ struct NoteDetailView: View {
                     HStack(spacing: 20){
                         HStack(spacing: 25){
                             Button{
-                                dismiss()
+                                
                             }label: {
                                 Image(systemName: "bold")
                             }
