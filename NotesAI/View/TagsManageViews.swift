@@ -70,7 +70,7 @@ struct TagsManageViews: View {
                                         } label: {
                                             HStack {
                                                 Circle()
-                                                    .fill(Color(color.rawValue))
+                                                    .fill(Color.fromHex(color.rawValue))
                                                     .frame(width: 20, height: 20)
                                                 Text(color.name)
                                             }
@@ -90,8 +90,8 @@ struct TagsManageViews: View {
                         .padding(.vertical, 12)
                         .background(
                             Capsule()
-                                //.fill(tag.color)
-                               .fill(.cayena)
+                                .fill(tag.color)
+                               //.fill(.cayena)
                         )
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {

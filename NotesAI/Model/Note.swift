@@ -20,7 +20,7 @@ struct Note: Identifiable, Codable{
     @DocumentID var id: String?
     var title: String //font is never saved in the firebase
     var content: String
-    var tags: [Tag?] = []
+    var tags: [String] = []
     var dateCreated: Date = Date()
     var dateModified: Date = Date()
     var isPinned: Bool = false

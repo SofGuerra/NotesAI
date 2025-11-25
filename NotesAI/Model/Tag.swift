@@ -9,29 +9,23 @@ import Foundation
 import FirebaseFirestore
 import SwiftUI
 
-struct Tag: Identifiable, Codable {
+struct Tag: Identifiable, Codable, Equatable {
     
     @DocumentID var id: String?
     var name: String
     var hexColor: String
    // var customColor: String?  // e.g. "#FF5733"
         
-        var color: Color {
-            Color(hexColor)
-
-//        switch customColor {
-//            case "Red":
-//                return .customRed
-//            case "Blue":
-//                return .customBlue
-//        case "Gray":
-//            return .customGray
-//            default:
-//                return .white // color por defecto si no coincide
-//            }
+    var color: Color {
+            Color.fromHex(hexColor)
         }
+    static func == (lhs: Tag, rhs: Tag) -> Bool {
+                return lhs.name == rhs.name
+            }
 
 }
+
+
 
 
 enum CustomColors: String {
