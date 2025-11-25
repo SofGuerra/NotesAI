@@ -33,7 +33,7 @@ Is a Note taking IOs app where as a user you have the posibility to **create, or
 
 | Home | Archived notes | Completed Tasks | Active Tasks | Tags |
 |------|--------------|-----------------|---------|---------------|
-| ![home](screenshots/home.png) | ![active](screenshots/active.png) | ![completed](screenshots/completed.png) | ![archive](screenshots/archive.png) | ![summary](screenshots/video_summary.png) |
+| ![home](Screenshots/CreatedNotes.png) | ![active](Screenshots/ArchivedNotes.png) | ![completed](Screenshots/completed.png) | ![archive](Screenshots/activetasks.png) | ![summary](Screenshots/Tags.png) |
 
 
 ---
@@ -43,8 +43,37 @@ Jimena Marin, Juan Pablo Monroy, Sofia Quintero
 
 ---
 #### References
-Jimena M:
+Jimena Marin
+
 Readme: 
 https://www.youtube.com/watch?v=DWFs6aqknqw
 https://gprm.itsvg.in/
 https://shields.io/
+
+Toolbar:
+https://developer.apple.com/documentation/swiftui/view/toolbar(content:)
+Google search
+
+swipeActions:
+https://www.youtube.com/watch?v=LFrkGCFN_QE
+
+Sidemenu:
+https://www.youtube.com/watch?v=SikNH5E61gI&t=606s
+https://www.youtube.com/watch?v=AXGrYI78hIo&t=112s
+
+colorScheme:
+https://developer.apple.com/documentation/swiftui/colorscheme
+https://developer.apple.com/documentation/swiftui/view/preferredcolorscheme(_:)
+https://medium.com/@dhavaljasoliya8/creating-a-dynamic-theme-switcher-light-dark-mode-in-swiftui-79d57427d392
+https://livsycode.com/swiftui/swiftui-theme-dark-mode-light-mode-and-system-theme/
+https://www.youtube.com/watch?v=nZNoJOtFNBw
+https://stackoverflow.com/questions/58476048/implement-dark-mode-switch-in-swiftui-app
+https://www.hackingwithswift.com/quick-start/swiftui/what-is-the-appstorage-property-wrapper
+https://www.youtube.com/watch?v=zyuSUrfelw8
+
+TextEditor:
+https://www.youtube.com/watch?v=NiiYeoFYiXQ
+https://artemnovichkov.com/blog/mastering-text-editor-in-swiftui
+https://www.youtube.com/watch?v=AiSLtya25ac
+
+---
