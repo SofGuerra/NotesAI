@@ -57,7 +57,7 @@ struct HomePageView: View {
                             Text("Profile")
                                 .padding()
                         }
-                        NavigationLink(destination: TaskView()){
+                        NavigationLink(destination: TaskView().environmentObject(TaskViewModel.shared)){
                             Image(systemName: "checkmark.rectangle.stack")
                             Text("Tasks")
                                 .padding()

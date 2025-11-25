@@ -12,6 +12,7 @@ struct TaskDetailView: View {
     @EnvironmentObject private var taskManager: TaskViewModel
     @State var task: TaskModel?
     @State private var isEditing = false
+    @State private var newId = ""
     @State private var newTitle = ""
     @State private var newContent = ""
     @State private var newDeadline = Date()
@@ -51,6 +52,7 @@ struct TaskDetailView: View {
             .contentShape(Rectangle())
             .onTapGesture {
                 if let existingTask = task {
+                    newId = existingTask.id!
                     newTitle = existingTask.noteDetails.title
                     newContent = existingTask.noteDetails.content
                     newDeadline = existingTask.deadline
@@ -70,6 +72,7 @@ struct TaskDetailView: View {
                         Button {
                             if let existingTask = task {
                                 var update = existingTask
+                                update.id = newId
                                 update.noteDetails.title = newTitle
                                 update.noteDetails.content = newContent
                                 update.deadline = newDeadline

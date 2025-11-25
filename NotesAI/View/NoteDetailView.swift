@@ -18,6 +18,7 @@ struct NoteDetailView: View {
     @State private var newNoteTitle = ""
     @State private var newNoteContent = ""
     @State private var textSelection: TextSelection?
+    @EnvironmentObject private var taskManager: TaskViewModel
     
     var body: some View {
         
@@ -58,6 +59,15 @@ struct NoteDetailView: View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 20){
                         HStack(spacing: 25){
+                            Button{
+                                var newDeadline: Date = Date.now
+                                var newRecurrence: Recurrence = .none
+                                var newIsCompleted: Bool = false
+                                let newTask = TaskModel(noteDetails: note!, deadline: newDeadline, recurrence: newRecurrence, isCompleted: newIsCompleted)
+                                taskManager.addTask(task: newTask)
+                            }label: {
+                                Image(systemName: "checkmark.rectangle.stack")
+                            }
                             Button{
                                 
                             }label: {

@@ -20,7 +20,8 @@ struct NoteView: View {
                     ForEach(noteManager.notes.filter{!$0.isArchived}){
                         note in
                         HStack{
-                            NavigationLink(destination: NoteDetailView(note: note)){
+                            NavigationLink(destination: NoteDetailView(note: note)
+                                .environmentObject(TaskViewModel.shared)){
                                 VStack (alignment: .leading){
                                     Text(note.title)
                                     Text(note.content)
