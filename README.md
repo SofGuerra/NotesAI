@@ -44,3 +44,7 @@ Jimena Marin, Juan Pablo Monroy, Sofia Quintero
 ---
 #### References
 Jimena M:
+Readme: 
+https://www.youtube.com/watch?v=DWFs6aqknqw
+https://gprm.itsvg.in/
+https://shields.io/
