@@ -17,32 +17,32 @@ struct TagsManageViews: View {
     @State private var newtagName = ""
     
     var body: some View {
+        
         NavigationStack{
             
-            VStack(spacing: 20){
+            VStack{
                 HStack{
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "chevron.left")
-                            .bold()
-                            .font(.title)
-                            .foregroundStyle(.black)
-                    }
+//                    Button {
+//                        dismiss()
+//                    } label: {
+//                        Image(systemName: "chevron.left")
+//                            .bold()
+//                            .font(.title)
+//                            .foregroundStyle(.black)
+//                    }
                     
                     Spacer()
                     
                     Text("Tags")
                         .font(.title2)
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.primary)
                         .bold()
-                    
-                    
+
                     
                     Spacer()
                     
                     Button{
-                        tagManager.addTag(name: "Title", hexColor: "#C2C2C2") //fix en assets
+                        tagManager.addTag(name: "Title", hexColor: "#C2C2C2")
                     }label: {
                         Image(systemName: "plus")
                             .bold()
@@ -61,33 +61,32 @@ struct TagsManageViews: View {
                             
                             
                             
-                            Menu {
-                                ForEach(PredefinedColor.allCases, id: \.self) { color in
-                                    Button {
-                                        var updatedTag = tag
-                                        updatedTag.hexColor = color.rawValue
-                                        tagManager.editTag(tag: updatedTag)
-                                    } label: {
-                                        HStack {
-                                            Circle()
-                                                .fill(Color.fromHex(color.rawValue))
-                                                .frame(width: 20, height: 20)
-                                            Text(color.name)
+                                Menu {
+                                    ForEach(PredefinedColor.allCases, id: \.self) { color in
+                                        Button {
+                                            var updatedTag = tag
+                                            updatedTag.hexColor = color.rawValue
+                                            tagManager.editTag(tag: updatedTag)
+                                        } label: {
+                                            HStack {
+                                                Circle()
+                                                    .fill(Color.fromHex(color.rawValue))
+                                                    .frame(width: 20, height: 20)
+                                                Text(color.name)
+                                            }
                                         }
                                     }
+                                } label: {
+                                    Image(systemName: "circle")
+                                        .foregroundColor(.black)
                                 }
-                            } label: {
-                                Image(systemName: "circle")
-                                    .foregroundColor(.black)
-                            }
-                   
                         }
                         .padding(.horizontal)
                         .padding(.vertical, 12)
                         .background(
                             Capsule()
                                 .fill(tag.color)
-                            //.fill(.cayena)
+                             
                         )
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {
@@ -96,9 +95,9 @@ struct TagsManageViews: View {
                                 Text("Delete")
                                     .bold()
                                     .font(.title)
-                                //.foregroundStyle(.red)
+                                    
                             }
-                            //.tint(.red)
+                            
                             
                         }
                     }
@@ -106,14 +105,6 @@ struct TagsManageViews: View {
                 
             }
             .listStyle(.plain)
-            //            .onAppear {
-            //                tagManager.fetchTags()
-            //            }
-            //            .onTapGesture { if let existingtag = Tag {
-            //                        newtagName = existingtag.name
-            //                            }
-            
-            //
             Spacer()
             Divider()
             

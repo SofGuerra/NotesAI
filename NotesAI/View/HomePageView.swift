@@ -64,7 +64,7 @@ struct HomePageView: View {
                         }
                         
                         NavigationLink(destination:
-                                        TagsManageViews().environmentObject(TagManager.shared )){
+                            TagsManageViews().environmentObject(TagManager.shared )){
                             Image(systemName: "tag")
                             Text("Tags")
                                 .padding()
