@@ -101,6 +101,9 @@ https://developer.apple.com/documentation/pdfkit
 TagColorImplementation:
 https://stackoverflow.com/questions/56874133/use-hex-color-in-swiftui
 
+Symbols usage:
+https://developer.apple.com/sf-symbols/
+
 ---
 
 https://www.appcoda.com/colorpicker-datepicker/#
