@@ -81,13 +81,28 @@ https://www.youtube.com/watch?v=AiSLtya25ac
 #### References
 Juan Monroy
 
-General swift questions:
-https://www.appcoda.com/
+General swift questions: https://www.appcoda.com/
 
-Picker:
-https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-picker-and-read-values-from-it
+Picker: https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-picker-and-read-values-from-it
 
-DatePicker:
+DatePicker: https://www.appcoda.com/colorpicker-datepicker/# https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-date-picker-and-read-values-from-it
+
+Custom Binding: https://swiftsenpai.com/development/refresh-cells-uihostingconfiguration/
+
+---
+
+#### References
+Sofia Guerra
+
+ExportPDF:
+https://developer.apple.com/documentation/uikit/uiactivityviewcontroller
+https://developer.apple.com/documentation/pdfkit
+
+TagColorImplementation:
+https://stackoverflow.com/questions/56874133/use-hex-color-in-swiftui
+
+--
+
 https://www.appcoda.com/colorpicker-datepicker/#
 https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-date-picker-and-read-values-from-it
 
