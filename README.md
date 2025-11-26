@@ -33,7 +33,7 @@ Is a Note taking IOs app where as a user you have the posibility to **create, or
 
 | Home | Archived notes | Completed Tasks | Active Tasks | Tags |
 |------|--------------|-----------------|---------|---------------|
-| ![home](Screenshots/CreatedNotes.png) | ![active](Screenshots/ArchivedNotes.png) | ![completed](Screenshots/completed.png) | ![archive](Screenshots/activetasks.png) | ![summary](Screenshots/Tags.png) |
+| ![home](Screenshots/NotesView.png) | ![active](Screenshots/ArchivedNotes.png) | ![completed](Screenshots/Tasks.png) | ![archive](Screenshots/TaskModified.png) | ![summary](Screenshots/Tags.png) |
 
 
 ---
